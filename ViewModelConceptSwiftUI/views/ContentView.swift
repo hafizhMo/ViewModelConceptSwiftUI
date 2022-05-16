@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var viewModel = CounterViewModel()
+    @EnvironmentObject private var viewModel: CounterViewModel
     
     var body: some View {
         VStack {
@@ -37,5 +37,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(CounterViewModel())
     }
 }

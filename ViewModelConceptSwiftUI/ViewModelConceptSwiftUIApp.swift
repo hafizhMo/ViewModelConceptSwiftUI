@@ -9,9 +9,22 @@ import SwiftUI
 
 @main
 struct ViewModelConceptSwiftUIApp: App {
+    @StateObject private var viewModel = CounterViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                ContentView()
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+                ContentDetailView()
+                    .tabItem {
+                        Label("Settings", systemImage: "gearshape")
+                    }
+            }
+            .accentColor(.teal)
+            .environmentObject(viewModel)
         }
     }
 }
