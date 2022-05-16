@@ -7,36 +7,24 @@
 
 import SwiftUI
 
-struct Counter {
-    var value: Int = 0
-    
-    mutating func increase() {
-        value += 1
-    }
-    
-    mutating func decrease() {
-        value -= 2
-    }
-}
-
 struct ContentView: View {
-    @State private var counter = Counter()
+    @StateObject private var viewModel = CounterViewModel()
     
     var body: some View {
         VStack {
-            Text("\(counter.value)")
+            Text("\(viewModel.value)")
                 .bold()
                 .padding()
                 .font(.largeTitle)
             HStack {
                 Button("Increase 1") {
-                    counter.increase()
+                    viewModel.increase()
                 }
                 .tint(.teal)
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 Button("Decrease 2") {
-                    counter.decrease()
+                    viewModel.decrease()
                 }
                 .tint(.teal)
                 .buttonStyle(.bordered)
